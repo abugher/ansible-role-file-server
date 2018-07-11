@@ -1,0 +1,12 @@
+---
+user_groups:
+  - 'readonly'
+users:
+  - 'readonly'
+authorized_keys:
+  - user:                       'readonly'
+    keyfile:                    "{{ role_path }}/../meliora/files/ssh_keys/root.id_rsa.pub"
+  - user:                       'readonly'
+    keyfile:                    "{{ role_path }}/../mawg/files/ssh_keys/root.id_rsa.pub"
+  - user:                       'readonly'
+    keyfile:                    "{{ role_path }}/../neuron/files/ssh_keys/root.id_rsa.pub"
