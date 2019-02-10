@@ -12,3 +12,5 @@ authorized_keys:
     keyfile:                    "{{ role_path }}/../../inventory/hosts/mawg/users/aaron/files/ssh_keys/id_rsa.pub"
   - user:                       'readonly'
     keyfile:                    "{{ role_path }}/../../inventory/hosts/neuron/users/root/files/ssh_keys/id_rsa.pub"
+allow_users:
+  - 'readonly'
