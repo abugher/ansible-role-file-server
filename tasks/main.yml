@@ -2,4 +2,9 @@
 - include:              '../tasks/user_groups.yml'
 - include:              '../tasks/users.yml'
 - include:              '../tasks/authorized_keys.yml'
+  vars:
+    authorized_keys:
+      - user:             'readonly'
+        keyfile:          "../../inventory/hosts/{{ item }}/users/root/files/ssh_keys/id_rsa.pub"
+  with_items:           "{{ groups['sshfs_client'] }}"
 - include:              '../tasks/allow_users.yml'

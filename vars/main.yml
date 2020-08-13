@@ -3,18 +3,5 @@ user_groups:
   - 'readonly'
 users:
   - 'readonly'
-# Storage clients should be defined as a hostgroup, and specific keys listed in
-# per-host inventory, rather than this static specification.
-authorized_keys:
-  - user:                       'readonly'
-    keyfile:                    "{{ role_path }}/../../inventory/hosts/meliora/users/root/files/ssh_keys/id_rsa.pub"
-  - user:                       'readonly'
-    keyfile:                    "{{ role_path }}/../../inventory/hosts/mawg/users/aaron/files/ssh_keys/id_rsa.pub"
-  - user:                       'readonly'
-    keyfile:                    "{{ role_path }}/../../inventory/hosts/mawg/users/root/files/ssh_keys/id_rsa.pub"
-  - user:                       'readonly'
-    keyfile:                    "{{ role_path }}/../../inventory/hosts/rudolph/users/root/files/ssh_keys/id_rsa.pub"
-  - user:                       'readonly'
-    keyfile:                    "{{ role_path }}/../../inventory/hosts/neuron/users/root/files/ssh_keys/id_rsa.pub"
 allow_users:
   - 'readonly'
