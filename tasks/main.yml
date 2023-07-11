@@ -7,6 +7,6 @@
       - user:             'readonly'
         keyfile:          "../../inventory/hosts/{{ item }}/users/root/files/ssh_keys/id_rsa.pub"
   with_items:
-    - "{{ groups['sshfs_client'] }}"
+    - "{{ groups['sshfs-client'] }}"
     - "{{ groups['remote'] }}"
 - include:              '../tasks/allow_users.yml'
