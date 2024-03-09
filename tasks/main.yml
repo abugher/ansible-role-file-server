@@ -1,7 +1,7 @@
 ---
-- include:              '../tasks/user_groups.yml'
-- include:              '../tasks/users.yml'
-- include:              '../tasks/authorized_keys.yml'
+- include_tasks:        '../tasks/user_groups.yml'
+- include_tasks:        '../tasks/users.yml'
+- include_tasks:        '../tasks/authorized_keys.yml'
   vars:
     authorized_keys:
       - user:             'readonly'
@@ -9,4 +9,4 @@
   with_items:
     - "{{ groups['sshfs-client'] }}"
     - "{{ groups['remote'] }}"
-- include:              '../tasks/allow_users.yml'
+- include_tasks:        '../tasks/allow_users.yml'
