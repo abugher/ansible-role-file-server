@@ -1,0 +1,11 @@
+server {
+  listen                        443 ssl;
+  ssl_certificate               /etc/ssl/certs/chain.pem;
+  ssl_certificate_key           /etc/ssl/private/{{ inventory_hostname }}.pem;
+  server_name                   download download.{{ domain }};
+
+  location / {
+    root                        /storage/bittorrent/content/;
+    autoindex                   on;
+  }
+}

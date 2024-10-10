@@ -10,3 +10,8 @@
     - "{{ groups['sshfs-client'] }}"
     - "{{ groups['remote'] }}"
 - include_tasks:        '../tasks/allow_users.yml'
+- include_tasks:        '../tasks/template_files.yml'
+- include_tasks:        '../tasks/symlinks.yml'
+- include_tasks:        '../tasks/restart_services.yml'
+  when:                 template_files_result.changed
+                        or symlink_result.changed

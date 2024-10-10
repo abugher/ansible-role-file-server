@@ -5,3 +5,25 @@ users:
   - 'readonly'
 allow_users:
   - 'readonly'
+template_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "{{ role_path }}/templates/sites-available/download.ssl.j2"
+    dest:               '/etc/nginx/sites-available/download.ssl'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                "{{ role_path }}/templates/sites-available/download.j2"
+    dest:               '/etc/nginx/sites-available/download'
+symlinks:
+  - owner:              'root'
+    group:              'root'
+    src:                "/etc/nginx/sites-available/download.ssl"
+    dest:               "/etc/nginx/sites-enabled/download.ssl"
+  - owner:              'root'
+    group:              'root'
+    src:                "/etc/nginx/sites-available/download"
+    dest:               "/etc/nginx/sites-enabled/download"
+restart_services:
+  - 'nginx'
