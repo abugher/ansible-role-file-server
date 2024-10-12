@@ -1,0 +1,19 @@
+server {
+  listen                        443 ssl;
+  ssl_certificate               /etc/ssl/certs/chain.pem;
+  ssl_certificate_key           /etc/ssl/private/{{ inventory_hostname }}.pem;
+  server_name                   convert convert.{{ domain }};
+
+  root                          /usr/local/convert/;
+
+  location ~ \.pl$ {
+    include                     /etc/nginx/fastcgi_params;
+    fastcgi_pass                unix:/var/run/fcgiwrap.socket;
+    # See:  http://stackoverflow.com/a/15424808
+    fastcgi_param               SCRIPT_FILENAME $document_root/$fastcgi_script_name;
+  }
+
+  location =/favicon.ico {
+    alias                       /usr/share/nginx/html/favicon.ico;
+  }
+}

@@ -1,4 +1,5 @@
 ---
+- include_tasks:        '../tasks/install_packages.yml'
 - include_tasks:        '../tasks/user_groups.yml'
 - include_tasks:        '../tasks/users.yml'
 - include_tasks:        '../tasks/authorized_keys.yml'
@@ -10,6 +11,8 @@
     - "{{ groups['sshfs-client'] }}"
     - "{{ groups['remote'] }}"
 - include_tasks:        '../tasks/allow_users.yml'
+- include_tasks:        '../tasks/create_files.yml'
+- include_tasks:        '../tasks/install_files.yml'
 - include_tasks:        '../tasks/template_files.yml'
 - include_tasks:        '../tasks/symlinks.yml'
 - include_tasks:        '../tasks/restart_services.yml'

@@ -1,29 +1,63 @@
 ---
+install_packages:
+  - 'libnginx-mod-http-perl'
+  - 'libcgi-session-perl'
+  - 'ffmpeg'
 user_groups:
   - 'readonly'
 users:
   - 'readonly'
 allow_users:
   - 'readonly'
+create_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    state:              'directory'
+    path:               '/usr/local/convert'
+install_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0755'
+    src:                'files/play.pl'
+    dest:               '/usr/local/convert/play.pl'
 template_files:
   - owner:              'root'
     group:              'root'
     mode:               '0644'
-    src:                "{{ role_path }}/templates/sites-available/download.ssl.j2"
+    src:                'templates/sites-available/download.ssl.j2'
     dest:               '/etc/nginx/sites-available/download.ssl'
   - owner:              'root'
     group:              'root'
     mode:               '0644'
-    src:                "{{ role_path }}/templates/sites-available/download.j2"
+    src:                'templates/sites-available/download.j2'
     dest:               '/etc/nginx/sites-available/download'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                'templates/sites-available/convert.ssl.j2'
+    dest:               '/etc/nginx/sites-available/convert.ssl'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                'templates/sites-available/convert.j2'
+    dest:               '/etc/nginx/sites-available/convert'
 symlinks:
   - owner:              'root'
     group:              'root'
-    src:                "/etc/nginx/sites-available/download.ssl"
-    dest:               "/etc/nginx/sites-enabled/download.ssl"
+    src:                '/etc/nginx/sites-available/download.ssl'
+    dest:               '/etc/nginx/sites-enabled/download.ssl'
   - owner:              'root'
     group:              'root'
-    src:                "/etc/nginx/sites-available/download"
-    dest:               "/etc/nginx/sites-enabled/download"
+    src:                '/etc/nginx/sites-available/download'
+    dest:               '/etc/nginx/sites-enabled/download'
+  - owner:              'root'
+    group:              'root'
+    src:                '/etc/nginx/sites-available/convert.ssl'
+    dest:               '/etc/nginx/sites-enabled/convert.ssl'
+  - owner:              'root'
+    group:              'root'
+    src:                '/etc/nginx/sites-available/convert'
+    dest:               '/etc/nginx/sites-enabled/convert'
 restart_services:
   - 'nginx'
