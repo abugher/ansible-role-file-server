@@ -1,6 +1,6 @@
 server {
   listen                        80;
-  server_name                   convert convert.{{ domain }};
+  server_name                   convert convert.{{ domain }}{% for domain_alias in domain_aliases %} convert.{{ domain_alias }}{% endfor %};
 
   root                          /usr/local/convert/;
 

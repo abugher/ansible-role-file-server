@@ -2,7 +2,7 @@ server {
   listen                        443 ssl;
   ssl_certificate               /etc/ssl/certs/chain.pem;
   ssl_certificate_key           /etc/ssl/private/{{ inventory_hostname }}.pem;
-  server_name                   convert convert.{{ domain }};
+  server_name                   convert convert.{{ domain }}{% for domain_alias in domain_aliases %} convert.{{ domain_alias }}{% endfor %};
 
   root                          /usr/local/convert/;
 
