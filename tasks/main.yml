@@ -6,7 +6,7 @@
   vars:
     authorized_keys:
       - user:             'readonly'
-        keyfile:          "inventory/hosts/{{ item }}/users/root/files/ssh_keys/id_rsa.pub"
+        keyfile:          "{{ inventory_path }}/hosts/{{ item }}/users/root/files/ssh_keys/id_rsa.pub"
   with_items:
     - "{{ groups['sshfs-client'] }}"
     - "{{ groups['remote'] }}"
